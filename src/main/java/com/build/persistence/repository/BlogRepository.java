@@ -1,6 +1,6 @@
-package com.build.repository;
+package com.build.persistence.repository;
 
-import com.build.model.Blog;
+import com.build.persistence.model.Blog;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

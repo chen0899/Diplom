@@ -1,7 +1,6 @@
 package com.build.service;
 
-import com.build.model.User;
-import org.springframework.web.multipart.MultipartFile;
+import com.build.persistence.model.User;
 
 import java.util.List;
 

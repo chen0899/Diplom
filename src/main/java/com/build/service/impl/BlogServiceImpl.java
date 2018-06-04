@@ -1,7 +1,7 @@
 package com.build.service.impl;
 
-import com.build.model.Blog;
-import com.build.repository.BlogRepository;
+import com.build.persistence.model.Blog;
+import com.build.persistence.repository.BlogRepository;
 import com.build.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

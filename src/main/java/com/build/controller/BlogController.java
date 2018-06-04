@@ -1,6 +1,6 @@
 package com.build.controller;
 
-import com.build.model.Blog;
+import com.build.persistence.model.Blog;
 import com.build.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

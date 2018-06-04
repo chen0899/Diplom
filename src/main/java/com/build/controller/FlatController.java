@@ -1,7 +1,6 @@
 package com.build.controller;
 
-import com.build.model.Flat;
-import com.build.model.House;
+import com.build.persistence.model.Flat;
 import com.build.service.FlatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

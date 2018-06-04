@@ -1,7 +1,6 @@
 package com.build.service;
 
-import com.build.model.Flat;
-import com.build.repository.FlatRepository;
+import com.build.persistence.model.Flat;
 
 import java.util.List;
 

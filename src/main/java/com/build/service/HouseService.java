@@ -1,6 +1,6 @@
 package com.build.service;
 
-import com.build.model.House;
+import com.build.persistence.model.House;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -15,6 +15,6 @@ public interface HouseService {
 
     boolean delete(Long id);
 
-    List<House> findTop3OrOrderByData(Timestamp data);
+    List<House> findTop3OrOrderByData();
 
 }

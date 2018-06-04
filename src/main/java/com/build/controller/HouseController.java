@@ -1,6 +1,6 @@
 package com.build.controller;
 
-import com.build.model.House;
+import com.build.persistence.model.House;
 import com.build.service.HouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,10 +28,14 @@ public class HouseController {
     }
 
     @GetMapping("/find-by-data")
-    private ResponseEntity<List<House>> findTop3ByData(@RequestParam Timestamp timestamp) {
-        return ResponseEntity.ok(houseService.findTop3OrOrderByData(timestamp));
-    }
+    private ResponseEntity<List<House>> findTop3ByData() {
+        try {
 
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok(houseService.findTop3OrOrderByData());
+    }
 
     @GetMapping("/find-one/{id}")
     private ResponseEntity<House> findOne(@PathVariable Long id){

@@ -1,4 +1,4 @@
-package com.build.model;
+package com.build.persistence.model;
 
 import javax.persistence.*;
 

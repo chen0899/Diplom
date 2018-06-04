@@ -1,7 +1,7 @@
 package com.build.service.impl;
 
-import com.build.model.Flat;
-import com.build.repository.FlatRepository;
+import com.build.persistence.model.Flat;
+import com.build.persistence.repository.FlatRepository;
 import com.build.service.FlatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

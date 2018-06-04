@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -41,7 +42,8 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 .authenticationManager(this.authenticationManager)
                 .tokenStore(tokenStore())
                 .accessTokenConverter(accessTokenConverter())
-                .userDetailsService(userDetailsService);
+                .userDetailsService(userDetailsService)
+                .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);
     }
 
     /**
@@ -50,12 +52,12 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("smartid")
+                .withClient("build_client_id")
                 .authorizedGrantTypes("password", "refresh_token")
                 .authorities("ROLE_TRUSTED_CLIENT")
                 .scopes("read", "write")
                 .resourceIds(RESOURCE_ID)
-                .secret("veryrootsecret")
+                .secret("build_secret")
                 .accessTokenValiditySeconds(accessTokenValiditySeconds);
     }
 

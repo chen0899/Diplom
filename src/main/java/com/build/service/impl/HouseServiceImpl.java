@@ -1,7 +1,8 @@
 package com.build.service.impl;
 
-import com.build.model.House;
-import com.build.repository.HouseRepository;
+import com.build.persistence.model.House;
+import com.build.persistence.repository.HouseRepository;
+import com.build.service.FlatService;
 import com.build.service.HouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,16 +10,21 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
-public class HouseServiceImpl implements HouseService{
+public class HouseServiceImpl implements HouseService {
 
     @Autowired
     private HouseRepository houseRepository;
+    @Autowired
+    private FlatService flatService;
 
     @Override
     public House save(House house) {
+        house.setId(houseRepository.save(house).getId());
         house.setData(Timestamp.valueOf(LocalDateTime.now()));
+        house.setFlats(house.getFlats().stream().map(flat -> flatService.save(flat)).collect(Collectors.toList()));
         return houseRepository.save(house);
     }
 
@@ -28,8 +34,8 @@ public class HouseServiceImpl implements HouseService{
     }
 
     @Override
-    public List<House> findTop3OrOrderByData(Timestamp data) {
-        return houseRepository.findTop3OrOrderByData(data);
+    public List<House> findTop3OrOrderByData() {
+        return houseRepository.findTop3ByOrderByDataDesc();
     }
 
     @Override

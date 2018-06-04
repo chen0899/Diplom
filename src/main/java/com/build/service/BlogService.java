@@ -1,6 +1,6 @@
 package com.build.service;
 
-import com.build.model.Blog;
+import com.build.persistence.model.Blog;
 
 import java.util.List;
 

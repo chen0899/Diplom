@@ -1,6 +1,6 @@
-package com.build.model;
+package com.build.persistence.model;
 
-import com.build.model.enums.Role;
+import com.build.persistence.model.enums.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @Entity
-public class User implements UserDetails{
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -150,7 +150,6 @@ public class User implements UserDetails{
     public boolean isEnabled() {
         return available;
     }
-
 
 
     @Override

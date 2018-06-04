@@ -1,4 +1,4 @@
-package com.build.model;
+package com.build.persistence.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -15,6 +15,7 @@ public class House {
 
     @Column(columnDefinition = "LONGTEXT")
     private String information;
+    private String name;
 
     @OneToMany(mappedBy = "house")
     private List<Flat> flats;
@@ -65,8 +66,18 @@ public class House {
         return data;
     }
 
-    public void setData(Timestamp data) {
+    public House setData(Timestamp data) {
         this.data = data;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public House setName(String name) {
+        this.name = name;
+        return this;
     }
 
     @Override
