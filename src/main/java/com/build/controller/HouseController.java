@@ -3,6 +3,8 @@ package com.build.controller;
 import com.build.model.House;
 import com.build.service.HouseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,24 +17,24 @@ public class HouseController {
     private HouseService houseService;
 
     @PostMapping("/save")
-    private House save(@RequestBody House house) {
-        return houseService.save(house);
+    private ResponseEntity<House> save(@RequestBody House house) {
+        return ResponseEntity.ok(houseService.save(house));
     }
 
     @GetMapping("/find-all")
-    private List<House> findAll(){
-        return houseService.findAll();
+    private ResponseEntity<List<House>> findAll(){
+        return ResponseEntity.ok(houseService.findAll());
     }
 
 
     @GetMapping("/find-one/{id}")
-    private House findOne(@PathVariable Long id){
-        return houseService.findOne(id);
+    private ResponseEntity<House> findOne(@PathVariable Long id){
+        return ResponseEntity.ok(houseService.findOne(id));
     }
 
     @DeleteMapping("/delete/{id}")
-    private Boolean delete(@PathVariable Long id) {
-        return houseService.delete(id);
+    private ResponseEntity delete(@PathVariable Long id) {
+        return new ResponseEntity(houseService.delete(id)? HttpStatus.OK:HttpStatus.CONFLICT);
     }
 
 }

@@ -3,6 +3,8 @@ package com.build.controller;
 import com.build.model.Blog;
 import com.build.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,24 +17,24 @@ public class BlogController {
     private BlogService blogService;
 
     @PostMapping("/save")
-    private Blog save(@RequestBody Blog blog) {
-        return blogService.save(blog);
+    private ResponseEntity<Blog> save(@RequestBody Blog blog) {
+        return ResponseEntity.ok(blogService.save(blog));
     }
 
     @GetMapping("/find-all")
-    private List<Blog> findAll(){
-        return blogService.findAll();
+    private ResponseEntity<List<Blog>> findAll(){
+        return ResponseEntity.ok(blogService.findAll());
     }
 
 
     @GetMapping("/find-one/{id}")
-    private Blog findOne(@PathVariable Long id){
-        return blogService.findOne(id);
+    private ResponseEntity<Blog> findOne(@PathVariable Long id){
+        return ResponseEntity.ok(blogService.findOne(id));
     }
 
     @DeleteMapping("/delete/{id}")
-    private Boolean delete(@PathVariable Long id) {
-        return blogService.delete(id);
+    private ResponseEntity delete(@PathVariable Long id) {
+        return new ResponseEntity(blogService.delete(id)?HttpStatus.OK:HttpStatus.CONFLICT);
     }
 
 }
