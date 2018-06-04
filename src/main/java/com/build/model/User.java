@@ -1,5 +1,6 @@
 package com.build.model;
 
+import com.build.model.enums.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,12 +25,9 @@ public class User implements UserDetails{
     private Boolean available = true;
     @Column(columnDefinition = "LONGTEXT")
     private String information;
-    @Column(columnDefinition = "TEXT(1000)")
+    @Column(columnDefinition = "LONGTEXT")
     private String image;
-
-
-    public User() {
-    }
+    private Role role;
 
     public Long getId() {
         return id;
@@ -48,7 +46,6 @@ public class User implements UserDetails{
         this.name = name;
         return this;
     }
-
 
     public String getSurname() {
         return surname;
@@ -77,6 +74,15 @@ public class User implements UserDetails{
         return this;
     }
 
+    public Boolean getAvailable() {
+        return available;
+    }
+
+    public User setAvailable(Boolean available) {
+        this.available = available;
+        return this;
+    }
+
     public String getInformation() {
         return information;
     }
@@ -86,12 +92,29 @@ public class User implements UserDetails{
         return this;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public User setImage(String image) {
+        this.image = image;
+        return this;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public User setRole(Role role) {
+        this.role = role;
+        return this;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        /*List<SimpleGrantedAuthority> grantedAuthorities = new ArrayList<>();
-        grantedAuthorities.add(new SimpleGrantedAuthority(role.name().toUpperCase()));*/
-        return null;
+        List<SimpleGrantedAuthority> grantedAuthorities = new ArrayList<>();
+        grantedAuthorities.add(new SimpleGrantedAuthority(role.name().toUpperCase()));
+        return grantedAuthorities;
     }
 
     public String getPassword() {

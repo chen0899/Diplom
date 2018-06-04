@@ -16,40 +16,43 @@ public class House {
     @OneToMany
     private List<Flat> flats;
 
+    @Column(columnDefinition = "LONGTEXT")
     private String image;
-
-    public House() { }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public House setId(Long id) {
         this.id = id;
+        return this;
     }
 
     public String getInformation() {
         return information;
     }
 
-    public void setInformation(String information) {
+    public House setInformation(String information) {
         this.information = information;
+        return this;
     }
 
     public List<Flat> getFlats() {
         return flats;
     }
 
-    public void setFlats(List<Flat> flats) {
+    public House setFlats(List<Flat> flats) {
         this.flats = flats;
+        return this;
     }
 
     public String getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public House setImage(String image) {
         this.image = image;
+        return this;
     }
 
     @Override

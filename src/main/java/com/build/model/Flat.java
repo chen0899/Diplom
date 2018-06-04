@@ -11,44 +11,45 @@ public class Flat {
 
     private String image;
 
-    private double price;
+    private Double price;
 
     @ManyToOne
     private House house;
-
-    public Flat() {
-    }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public Flat setId(Long id) {
         this.id = id;
+        return this;
     }
 
     public String getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public Flat setImage(String image) {
         this.image = image;
+        return this;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public Flat setPrice(Double price) {
         this.price = price;
+        return this;
     }
 
     public House getHouse() {
         return house;
     }
 
-    public void setHouse(House house) {
+    public Flat setHouse(House house) {
         this.house = house;
+        return this;
     }
 
     @Override

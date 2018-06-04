@@ -1,9 +1,6 @@
 package com.build.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Blog {
@@ -12,25 +9,25 @@ public class Blog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(columnDefinition = "LONGTEXT")
     private String information;
-
-    public Blog() {
-    }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public Blog setId(Long id) {
         this.id = id;
+        return this;
     }
 
     public String getInformation() {
         return information;
     }
 
-    public void setInformation(String information) {
+    public Blog setInformation(String information) {
         this.information = information;
+        return this;
     }
 
     @Override
