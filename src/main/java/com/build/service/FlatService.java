@@ -1,15 +1,16 @@
 package com.build.service;
 
+import com.build.model.Flat;
 import com.build.repository.FlatRepository;
 
 import java.util.List;
 
 public interface FlatService {
-    FlatRepository save(FlatRepository flat);
+    Flat save(Flat flat);
 
-    FlatRepository findOne(Long id);
+    Flat  findOne(Long id);
 
-    List<FlatRepository> findAll();
+    List<Flat> findAll();
 
     boolean delete(Long id);
 }

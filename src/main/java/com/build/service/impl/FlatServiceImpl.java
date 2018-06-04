@@ -1,5 +1,6 @@
 package com.build.service.impl;
 
+import com.build.model.Flat;
 import com.build.repository.FlatRepository;
 import com.build.service.FlatService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +15,17 @@ public class FlatServiceImpl implements FlatService{
     private FlatRepository flatRepository;
 
     @Override
-    public FlatRepository save(FlatRepository flat) {
+    public Flat save(Flat flat) {
         return flatRepository.save(flat);
     }
 
     @Override
-    public FlatRepository findOne(Long id) {
+    public Flat findOne(Long id) {
         return flatRepository.findOne(id);
     }
 
     @Override
-    public List<FlatRepository> findAll() {
+    public List<Flat> findAll() {
         return flatRepository.findAll();
     }
 
