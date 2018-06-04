@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UserService {
 
-    User save(User user, MultipartFile multipartFile);
+    User save(User user);
 
     User findOne(Long id);
 
