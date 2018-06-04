@@ -2,6 +2,7 @@ package com.build.service;
 
 import com.build.model.House;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public interface HouseService {
@@ -13,4 +14,7 @@ public interface HouseService {
     List<House> findAll();
 
     boolean delete(Long id);
+
+    List<House> findTop3OrOrderByData(Timestamp data);
+
 }

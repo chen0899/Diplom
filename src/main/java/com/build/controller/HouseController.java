@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @RestController
@@ -24,6 +25,11 @@ public class HouseController {
     @GetMapping("/find-all")
     private ResponseEntity<List<House>> findAll(){
         return ResponseEntity.ok(houseService.findAll());
+    }
+
+    @GetMapping("/find-by-data")
+    private ResponseEntity<List<House>> findTop3ByData(@RequestParam Timestamp timestamp) {
+        return ResponseEntity.ok(houseService.findTop3OrOrderByData(timestamp));
     }
 
 

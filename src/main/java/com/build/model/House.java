@@ -1,6 +1,9 @@
 package com.build.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
@@ -18,6 +21,9 @@ public class House {
 
     @Column(columnDefinition = "LONGTEXT")
     private String image;
+
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private Timestamp data;
 
     public Long getId() {
         return id;
@@ -53,6 +59,14 @@ public class House {
     public House setImage(String image) {
         this.image = image;
         return this;
+    }
+
+    public Timestamp getData() {
+        return data;
+    }
+
+    public void setData(Timestamp data) {
+        this.data = data;
     }
 
     @Override
