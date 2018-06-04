@@ -4,6 +4,7 @@ import com.build.model.User;
 import com.build.repository.UserRepository;
 import com.build.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,10 +15,12 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public User save(User user) {
-        return userRepository.save(user);
+        return userRepository.save(user.setPassword(passwordEncoder.encode(user.getPassword())));
     }
 
     @Override
