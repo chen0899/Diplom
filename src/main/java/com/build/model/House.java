@@ -13,7 +13,7 @@ public class House {
     @Column(columnDefinition = "LONGTEXT")
     private String information;
 
-    @OneToMany
+    @OneToMany(mappedBy = "house")
     private List<Flat> flats;
 
     @Column(columnDefinition = "LONGTEXT")
