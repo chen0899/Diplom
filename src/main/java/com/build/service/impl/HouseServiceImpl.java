@@ -47,4 +47,9 @@ public class HouseServiceImpl implements HouseService {
     public boolean delete(Long id) {
         return false;
     }
+
+    @Override
+    public String getImage(Long id) {
+        return houseRepository.findImage(id);
+    }
 }

@@ -7,8 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import static org.springframework.http.CacheControl.maxAge;
 
 @RestController
 @RequestMapping("/house")
@@ -23,7 +25,7 @@ public class HouseController {
     }
 
     @GetMapping("/find-all")
-    private ResponseEntity<List<House>> findAll(){
+    private ResponseEntity<List<House>> findAll() {
         return ResponseEntity.ok(houseService.findAll());
     }
 
@@ -33,13 +35,17 @@ public class HouseController {
     }
 
     @GetMapping("/find-one/{id}")
-    private ResponseEntity<House> findOne(@PathVariable Long id){
+    private ResponseEntity<House> findOne(@PathVariable Long id) {
         return ResponseEntity.ok(houseService.findOne(id));
     }
 
     @DeleteMapping("/delete/{id}")
     private ResponseEntity delete(@PathVariable Long id) {
-        return new ResponseEntity(houseService.delete(id)? HttpStatus.OK:HttpStatus.CONFLICT);
+        return new ResponseEntity(houseService.delete(id) ? HttpStatus.OK : HttpStatus.CONFLICT);
     }
 
+    @GetMapping("/image/{id}")
+    private ResponseEntity<String> getImage(@PathVariable Long id) {
+        return ResponseEntity.ok().cacheControl(maxAge(31556926, TimeUnit.SECONDS).cachePublic()).body(houseService.getImage(id));
+    }
 }

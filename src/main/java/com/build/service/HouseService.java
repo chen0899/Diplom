@@ -17,4 +17,6 @@ public interface HouseService {
 
     List<House> findTop3OrOrderByData();
 
+    String getImage(Long id);
+
 }

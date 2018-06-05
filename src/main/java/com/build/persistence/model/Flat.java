@@ -1,5 +1,7 @@
 package com.build.persistence.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,11 +11,13 @@ public class Flat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnore
     @Column(columnDefinition = "LONGTEXT")
     private String image;
 
     private Double price;
 
+    @JsonIgnore
     @ManyToOne
     private House house;
 

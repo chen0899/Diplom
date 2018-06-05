@@ -1,6 +1,7 @@
 package com.build.persistence.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -20,6 +21,7 @@ public class House {
     @OneToMany(mappedBy = "house")
     private List<Flat> flats;
 
+    @JsonIgnore
     @Column(columnDefinition = "LONGTEXT")
     private String image;
 

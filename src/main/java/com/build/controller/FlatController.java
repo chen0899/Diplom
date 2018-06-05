@@ -8,6 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import static org.springframework.http.CacheControl.maxAge;
 
 @RestController
 @RequestMapping("/flat")
@@ -36,4 +39,10 @@ public class FlatController {
     private ResponseEntity delete(@PathVariable Long id) {
         return new ResponseEntity(flatService.delete(id)?HttpStatus.OK:HttpStatus.CONFLICT);
     }
+
+    @GetMapping("/image/{id}")
+    private ResponseEntity<String> getImage(@PathVariable Long id) {
+        return ResponseEntity.ok().cacheControl(maxAge(31556926, TimeUnit.SECONDS).cachePublic()).body(flatService.getImage(id));
+    }
+
 }

@@ -33,4 +33,9 @@ public class FlatServiceImpl implements FlatService{
     public boolean delete(Long id) {
         return false;
     }
+
+    @Override
+    public String getImage(Long id) {
+        return flatRepository.findImage(id);
+    }
 }

@@ -12,4 +12,7 @@ public interface FlatService {
     List<Flat> findAll();
 
     boolean delete(Long id);
+
+    String getImage(Long id);
+
 }
