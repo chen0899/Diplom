@@ -24,7 +24,7 @@ public class HouseServiceImpl implements HouseService {
     public House save(House house) {
         house.setId(houseRepository.save(house).getId());
         house.setData(Timestamp.valueOf(LocalDateTime.now()));
-        house.setFlats(house.getFlats().stream().map(flat -> flatService.save(flat)).collect(Collectors.toList()));
+        house.setFlats(house.getFlats().stream().map(flat -> flatService.save(flat.setHouse(house))).collect(Collectors.toList()));
         return houseRepository.save(house);
     }
 

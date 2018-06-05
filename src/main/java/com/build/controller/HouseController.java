@@ -29,11 +29,6 @@ public class HouseController {
 
     @GetMapping("/find-by-data")
     private ResponseEntity<List<House>> findTop3ByData() {
-        try {
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
         return ResponseEntity.ok(houseService.findTop3OrOrderByData());
     }
 
