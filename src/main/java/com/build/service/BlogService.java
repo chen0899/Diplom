@@ -13,5 +13,4 @@ public interface BlogService {
 
     boolean delete(Long id);
 
-
 }

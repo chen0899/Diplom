@@ -48,4 +48,9 @@ public class HouseController {
     private ResponseEntity<String> getImage(@PathVariable Long id) {
         return ResponseEntity.ok().cacheControl(maxAge(31556926, TimeUnit.SECONDS).cachePublic()).body(houseService.getImage(id));
     }
+
+    @PostMapping(value = "/image/{id}",consumes = "text/plain")
+    private ResponseEntity<House> addImage (@PathVariable Long id, @RequestBody String image) {
+        return ResponseEntity.ok(houseService.addImage(id,image));
+    }
 }

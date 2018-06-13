@@ -19,4 +19,6 @@ public interface HouseService {
 
     String getImage(Long id);
 
+    House addImage (Long id, String image );
+
 }

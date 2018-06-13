@@ -52,4 +52,9 @@ public class HouseServiceImpl implements HouseService {
     public String getImage(Long id) {
         return houseRepository.findImage(id);
     }
+
+    @Override
+    public House addImage(Long id, String image) {
+        return houseRepository.save(houseRepository.findOne(id).setImage(image));
+    }
 }
