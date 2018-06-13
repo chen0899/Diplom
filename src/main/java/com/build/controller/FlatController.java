@@ -44,5 +44,4 @@ public class FlatController {
     private ResponseEntity<String> getImage(@PathVariable Long id) {
         return ResponseEntity.ok().cacheControl(maxAge(31556926, TimeUnit.SECONDS).cachePublic()).body(flatService.getImage(id));
     }
-
 }

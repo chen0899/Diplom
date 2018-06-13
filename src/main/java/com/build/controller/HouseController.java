@@ -49,8 +49,14 @@ public class HouseController {
         return ResponseEntity.ok().cacheControl(maxAge(31556926, TimeUnit.SECONDS).cachePublic()).body(houseService.getImage(id));
     }
 
-    @PostMapping(value = "/image/{id}",consumes = "text/plain")
-    private ResponseEntity<House> addImage (@PathVariable Long id, @RequestBody String image) {
-        return ResponseEntity.ok(houseService.addImage(id,image));
+    @PostMapping(value = "/image/{id}", consumes = "text/plain")
+    private ResponseEntity<House> addImage(@PathVariable Long id, @RequestBody String image) {
+        return ResponseEntity.ok(houseService.addImage(id, image));
     }
+
+    @GetMapping("/filter")
+    private ResponseEntity<List<House>> filter(@RequestParam Double price, @RequestParam Integer space, @RequestParam Double priceOfOneSpace, @RequestParam String houseName, @RequestParam Integer countRoom) {
+        return ResponseEntity.ok(houseService.filter(price, priceOfOneSpace, countRoom, space, houseName));
+    }
+
 }

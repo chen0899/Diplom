@@ -57,4 +57,15 @@ public class HouseServiceImpl implements HouseService {
     public House addImage(Long id, String image) {
         return houseRepository.save(houseRepository.findOne(id).setImage(image));
     }
+
+    @Override
+    public List<House> filter(Double price, Double priceOfOneSpace, Integer countRoom, Integer space, String houseName) {
+        return houseRepository.findAll().stream()
+                .filter(house -> house.getFlats().stream()
+                        .anyMatch(flat -> flat.getPrice() <= price &&
+                                flat.getPriceForOneSpace() <= priceOfOneSpace &&
+                                flat.getCountRoom() == countRoom &&
+                                flat.getSpace().equals(space)
+                        )).collect(Collectors.toList());
+    }
 }

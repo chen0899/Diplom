@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface HouseService {
 
-    House save (House house);
+    House save(House house);
 
     House findOne(Long id);
 
@@ -19,6 +19,8 @@ public interface HouseService {
 
     String getImage(Long id);
 
-    House addImage (Long id, String image );
+    House addImage(Long id, String image);
+
+    List<House> filter(Double price, Double priceOfOneSpace, Integer countRoom, Integer space, String houseName);
 
 }

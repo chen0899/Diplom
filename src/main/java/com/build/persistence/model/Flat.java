@@ -17,6 +17,12 @@ public class Flat {
 
     private Double price;
 
+    private Integer space;
+
+    private Double priceForOneSpace;
+
+    private Integer countRoom;
+
     @JsonIgnore
     @ManyToOne
     private House house;
@@ -54,6 +60,33 @@ public class Flat {
 
     public Flat setHouse(House house) {
         this.house = house;
+        return this;
+    }
+
+    public Integer getSpace() {
+        return space;
+    }
+
+    public Flat setSpace(Integer space) {
+        this.space = space;
+        return this;
+    }
+
+    public Double getPriceForOneSpace() {
+        return priceForOneSpace;
+    }
+
+    public Flat setPriceForOneSpace(Double priceForOneSpace) {
+        this.priceForOneSpace = priceForOneSpace;
+        return this;
+    }
+
+    public int getCountRoom() {
+        return countRoom;
+    }
+
+    public Flat setCountRoom(int countRoom) {
+        this.countRoom = countRoom;
         return this;
     }
 
