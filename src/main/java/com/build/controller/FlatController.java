@@ -44,4 +44,8 @@ public class FlatController {
     private ResponseEntity<String> getImage(@PathVariable Long id) {
         return ResponseEntity.ok().cacheControl(maxAge(31556926, TimeUnit.SECONDS).cachePublic()).body(flatService.getImage(id));
     }
+    @PostMapping(value = "/image/{id}",consumes = "text/plain")
+    private ResponseEntity<Flat> setImage(@PathVariable Long id,@RequestBody String image) {
+        return ResponseEntity.ok(flatService.saveImage(id, image));
+    }
 }

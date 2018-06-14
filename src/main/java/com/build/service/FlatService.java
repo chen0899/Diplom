@@ -15,4 +15,6 @@ public interface FlatService {
     boolean delete(Long id);
 
     String getImage(Long id);
+
+    Flat saveImage(Long id, String img);
 }
