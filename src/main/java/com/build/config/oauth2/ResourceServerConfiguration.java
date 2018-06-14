@@ -1,5 +1,6 @@
 package com.build.config.oauth2;
 
+import com.build.persistence.model.enums.Role;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -38,6 +39,8 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
                 .antMatchers("/oauth/token").permitAll()
                 .antMatchers("/user").permitAll()
                 .antMatchers("/add").permitAll()
+                .antMatchers(HttpMethod.POST).hasRole(Role.ADMIN.toString())
+                .antMatchers("/user/save").permitAll()
                 .anyRequest().permitAll();
     }
 }

@@ -69,8 +69,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/node_modules/**").permitAll()
                 .antMatchers("/assets/**").permitAll()
                 .antMatchers("/oauth/token").permitAll()
-                .antMatchers(HttpMethod.POST).hasRole(Role.ADMIN.toString())
-                .antMatchers(HttpMethod.POST,"/user/save").permitAll()
                 .and().formLogin().loginPage("/login").permitAll()
         ;
     }
