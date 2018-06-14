@@ -15,6 +15,11 @@ public class Flat {
     @Column(columnDefinition = "LONGTEXT")
     private String image;
 
+    @JsonIgnore
+    @Column(columnDefinition = "LONGTEXT")
+    private String imageFloor;
+
+
     private Double price;
 
     private Integer space;
@@ -86,6 +91,20 @@ public class Flat {
     }
 
     public Flat setCountRoom(int countRoom) {
+        this.countRoom = countRoom;
+        return this;
+    }
+
+    public String getImageFloor() {
+        return imageFloor;
+    }
+
+    public Flat setImageFloor(String imageFloor) {
+        this.imageFloor = imageFloor;
+        return this;
+    }
+
+    public Flat setCountRoom(Integer countRoom) {
         this.countRoom = countRoom;
         return this;
     }

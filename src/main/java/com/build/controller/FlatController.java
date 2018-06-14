@@ -1,6 +1,7 @@
 package com.build.controller;
 
 import com.build.persistence.model.Flat;
+import com.build.persistence.model.utils.FlatImageWrapper;
 import com.build.service.FlatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,7 +46,7 @@ public class FlatController {
         return ResponseEntity.ok().cacheControl(maxAge(31556926, TimeUnit.SECONDS).cachePublic()).body(flatService.getImage(id));
     }
     @PostMapping(value = "/image/{id}",consumes = "text/plain")
-    private ResponseEntity<Flat> setImage(@PathVariable Long id,@RequestBody String image) {
-        return ResponseEntity.ok(flatService.saveImage(id, image));
+    private ResponseEntity<Flat> setImage(@PathVariable Long id, @RequestBody FlatImageWrapper flatImageWrapper) {
+        return ResponseEntity.ok(flatService.saveImage(id, flatImageWrapper.getImage(),flatImageWrapper.getFloorImage()));
     }
 }

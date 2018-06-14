@@ -25,6 +25,9 @@ public class House {
     @Column(columnDefinition = "LONGTEXT")
     private String image;
 
+
+    private List<Image> images;
+
     @JsonFormat(pattern = "dd-MM-yyyy")
     private Timestamp data;
 
@@ -79,6 +82,15 @@ public class House {
 
     public House setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public House setImages(List<Image> images) {
+        this.images = images;
         return this;
     }
 
