@@ -15,6 +15,10 @@ public class Image {
     @Column(columnDefinition = "LONGTEXT")
     private String image;
 
+    @ManyToOne
+    @JsonIgnore
+    private House house;
+
     public Long getId() {
         return id;
     }
@@ -30,6 +34,15 @@ public class Image {
 
     public Image setImage(String image) {
         this.image = image;
+        return this;
+    }
+
+    public House getHouse() {
+        return house;
+    }
+
+    public Image setHouse(House house) {
+        this.house = house;
         return this;
     }
 

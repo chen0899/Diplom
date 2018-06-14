@@ -21,9 +21,9 @@ public class ImageController {
         return ResponseEntity.ok(imageService.findOne(id));
     }
 
-    @PostMapping(value="/save",consumes = "text/plain")
-    private ResponseEntity<Image> save(@RequestBody String image ) {
-        return ResponseEntity.ok(imageService.save(new Image().setImage(image)));
+    @PostMapping(value="/save/{id}",consumes = "text/plain")
+    private ResponseEntity<Image> save(@RequestBody String image,@PathVariable Long id) {
+        return ResponseEntity.ok(imageService.save(image, id));
     }
 
     @GetMapping("/source/{id}")

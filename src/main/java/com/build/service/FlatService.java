@@ -17,4 +17,5 @@ public interface FlatService {
     String getImage(Long id);
 
     Flat saveImage(Long id, String img, String imgFloor);
+
 }

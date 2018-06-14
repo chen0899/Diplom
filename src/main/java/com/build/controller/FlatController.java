@@ -45,7 +45,18 @@ public class FlatController {
     private ResponseEntity<String> getImage(@PathVariable Long id) {
         return ResponseEntity.ok().cacheControl(maxAge(31556926, TimeUnit.SECONDS).cachePublic()).body(flatService.getImage(id));
     }
-    @PostMapping(value = "/image/{id}",consumes = "text/plain")
+
+    @GetMapping("/image-floor/{id}")
+    private ResponseEntity<String> getImageF(@PathVariable Long id) {
+        return ResponseEntity.ok().cacheControl(maxAge(31556926, TimeUnit.SECONDS).cachePublic()).body(flatService.findOne(id).getImageFloor()) ;
+    }
+
+    @GetMapping("/house/{id}")
+    private ResponseEntity<String> getHouseForFloor(@PathVariable Long id) {
+        return ResponseEntity.ok(flatService.findOne(id).getHouse().getName());
+    }
+
+    @PostMapping(value = "/image/{id}")
     private ResponseEntity<Flat> setImage(@PathVariable Long id, @RequestBody FlatImageWrapper flatImageWrapper) {
         return ResponseEntity.ok(flatService.saveImage(id, flatImageWrapper.getImage(),flatImageWrapper.getFloorImage()));
     }

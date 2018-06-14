@@ -42,6 +42,7 @@ public class FlatServiceImpl implements FlatService{
         return flatRepository.findImage(id);
     }
 
+
     @Override
     public Flat saveImage(Long id, String img, String imgFloor) {
         return flatRepository.save(flatRepository.findOne(id).setImage(img).setImageFloor(imgFloor));

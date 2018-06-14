@@ -25,7 +25,10 @@ public class House {
     @Column(columnDefinition = "LONGTEXT")
     private String image;
 
+    @Column(columnDefinition = "TEXT")
+    private String maps;
 
+    @OneToMany(mappedBy = "house")
     private List<Image> images;
 
     @JsonFormat(pattern = "dd-MM-yyyy")
@@ -91,6 +94,15 @@ public class House {
 
     public House setImages(List<Image> images) {
         this.images = images;
+        return this;
+    }
+
+    public String getMaps() {
+        return maps;
+    }
+
+    public House setMaps(String maps) {
+        this.maps = maps;
         return this;
     }
 
