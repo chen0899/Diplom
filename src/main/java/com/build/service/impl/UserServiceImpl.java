@@ -20,7 +20,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User save(User user) {
-        return userRepository.save(user.setPassword(passwordEncoder.encode(user.getPassword())).setRole(Role.DEFAULT));
+        if (findByEmail(user.getEmail())==null) {
+            return userRepository.save(user.setPassword(passwordEncoder.encode(user.getPassword())).setRole(Role.DEFAULT));
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -46,5 +50,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public Boolean delete(Long id) {
         return null;
+    }
+
+    @Override
+    public Boolean makeAdmin(Long id) {
+        try {
+            userRepository.save(findOne(id).setRole(Role.ADMIN));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

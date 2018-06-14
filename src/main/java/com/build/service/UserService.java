@@ -17,4 +17,6 @@ public interface UserService {
     List<User> findAll();
 
     Boolean delete(Long id);
+
+    Boolean makeAdmin (Long id);
 }

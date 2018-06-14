@@ -52,5 +52,9 @@ public class UserController {
         return new ResponseEntity(userService.delete(id)?HttpStatus.OK:HttpStatus.CONFLICT);
     }
 
+    @GetMapping("/kek")
+    private ResponseEntity change(@PathVariable Long id) {
+        return new ResponseEntity(userService.makeAdmin(id)?HttpStatus.OK:HttpStatus.CONFLICT);
+    }
 
 }
